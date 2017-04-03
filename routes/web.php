@@ -16,4 +16,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 
 Route::resource('home', 'HomeController');
+Route::get('/product/{id}/{slug}', 'ProductController@show');
 Route::resource('swapcurrency', 'CurrencyController');

@@ -48,8 +48,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <?php
-                        $currencyList = App\Currency\CurrencyHelper::currencyList();
-                        $currentCode = App\Currency\CurrencyHelper::getCurrentCode();
+                        if(class_exists('Currency')){
+                            $currencyList = Currency::currencyList();
+                            $currentCode = Currency::getCurrentCode();
+                        }else{
+                            $currentCode = 'SEK';
+                            $currencyList = [];
+                        }
                     ?>
                     <div class="dropdeown navbar-right">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

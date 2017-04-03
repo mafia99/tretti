@@ -8,23 +8,30 @@
  
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail" >
-                            <img src="{{ asset('uploads/'.$product->product_image)}}" class="img-responsive">
+                            <a href="{{ action('ProductController@show',["product"=>$product->id,'slug'=>str_slug($product->product_name)]) }}">
+                                <img src="{{ asset('uploads/'.$product->product_image)}}" class="img-responsive">
+                            </a>
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12">
                                         <h3>{{$product->product_name}}</h3>
                                     </div>
-                                    <div class="col-md-12 col-xs-12 price">
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-12 price">
                                         <h3>
-                                            <label>{{ App\Currency\CurrencyHelper::getCurrentCurrency($product->product_price) }}</label>
+                                            <label>
+                                                @if(class_exists('Currency'))
+                                                {{ Currency::getCurrentCurrency($product->product_price) }}
+                                                @endif
+                                            </label>
                                         </h3>
                                     </div>
+                                    <div class="col-md-5 col-xs-12 col-md-offset-1">
+                                        <a href="{{ action('ProductController@show',["product"=>$product->id,'slug'=>str_slug($product->product_name)]) }}" class="btn btn-success btn-product"> Detail</a>
+                                    </div>
                                 </div>
-                                <!--<p>{{$product->product_description}}</p>-->
-<!--                                <div class="row">
-                                    <div class="col-md-6 col-md-offset-3">
-                                        <a href="{{ URL::route('home.show',["product"=>$product->id]) }}" class="btn btn-success btn-product"> Detail</a></div>
-                                </div>-->
                             </div>
                         </div>
                     </div>

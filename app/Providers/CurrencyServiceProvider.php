@@ -23,6 +23,7 @@ class CurrencyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        require_once app_path('Currency/CurrencyHelper.php');
+      
     }
 }
